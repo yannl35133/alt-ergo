@@ -1317,4 +1317,4 @@ let parse_cmdline_arguments () =
   match r with
   | `Ok false -> raise (Exit_parse_command 0)
   | `Ok true -> ()
-  | e -> exit @@ Term.(exit_status_of_result e)
+  | (`Error _ | `Version | `Help) as e -> exit @@ Term.(exit_status_of_result e)
